@@ -205,6 +205,7 @@ def answer(query, context):
     )
     return chat.choices[0].message.content
 
+# writes rows that are matches to a csv file
 def to_csv(matches):
     buf = io.StringIO()
     writer = csv.writer(buf)
@@ -234,7 +235,7 @@ with st.sidebar:
     overfetch_k = st.slider("Overfetch size\n(how many results to pull when returning answer)\n", 20, 100, 30, step = 5)
     use_mmr = st.checkbox("Rerank with MMR", True)
 
-# searchbar form 
+# examples for users to pkug in to the searchbar form 
 examples = [
     "entry level data engineer roles in Vancouver with salary",
     "machine learning engineer roles with PyTorch",
@@ -330,7 +331,8 @@ if (submitted or auto) and query.strip():
 
                 with st.expander("Preview"):
                     st.write(md.get("text", "")[:2000])
-        # export 
+
+        # export to csv function
         csv_bytes = to_csv(final)
         st.download_button("Download sources as CSV", data=csv_bytes, file_name="job_sources.csv", mime="text/csv")
         st.caption("Dense retrieval with overfetch and optional MMR rerank. Client filters for role and location.")
