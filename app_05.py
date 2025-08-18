@@ -251,13 +251,21 @@ pending = st.session_state.pop("q_pending", None)
 if pending is not None:
     st.session_state["q"] = pending
 
+# set height to auto size for the text box
+base = 160
+per_line = 22
+max_h = 520
+curr = st.session_state.get("q", "")
+textbox_height = min(base + per_line * max(6, curr.count("\n") + 1), max_h)
+
 with st.form("search"):
     q_col1, q_col2 = st.columns([4, 1])
     with q_col1:
-        user_q = st.text_input(
+        user_q = st.text_area(
             "Ask about roles, skills, salary, location, or application links",
             key = "q",
-            placeholder = "Example. entry level data engineer roles in Vancouver with salary"
+            placeholder = "Example. entry level data engineer roles in Vancouver with salary",
+            height = textbox_height
         )
     with q_col2:
         submitted = st.form_submit_button("Search", use_container_width = True)
