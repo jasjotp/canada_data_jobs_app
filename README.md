@@ -34,9 +34,9 @@ This application combines web scraping, vector embeddings, and conversational AI
 
 2. **Enter your query in the text box for example “data scientist Toronto with PySpark” or “entry level machine learning engineer Vancouver**
 
-3. **Pick filters if you want such as Role or Location then click Search**
+3. **Pick filters such as Role or Location then click Search**
 
-4. **Wait for results review the answer with sources and use the Apply link or download sources as CSV**
+4. **Wait for results, review the answer with sources and use the Apply link or download sources as CSV**
 
 --- 
 
