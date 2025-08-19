@@ -12,8 +12,7 @@ Or open the site directly: https://www.truenorthjobsai.ca/
 
 ## Demo Video
 
-[Link to demo video will be added here]
-
+![Demo](truenorthjobs_demo.gif)
 ---
 
 ## Overview
