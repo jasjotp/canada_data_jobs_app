@@ -111,6 +111,29 @@ def mmr_rerank(query_vec, cand_texts, k = 8, lambda_param = 0.75):
 
     return selected 
 
+# function to condense long inputs like resumes 
+@st.cache_data(show_spinner=False, ttl=900)
+def condense_query(raw: str) -> str:
+    sys = (
+        "You create short focused search queries for finding matching job postings."
+        "Use role titles, seniority, key skills, locations, etc."
+    )
+
+    prompt = (
+        "From this text, produce a concise job search query:\n\n"
+        f"{raw}\n\n"
+        "Return only the query."
+    )
+
+    chat = openai.chat.completions.create(
+        model = "gpt-4o-mini",
+        messages = [{"role": "system", "content": sys}, {"role": "user", "content": prompt}],
+        temperature = 0.2,
+    )
+
+    query = chat.choices[0].message.content.strip()
+    return query 
+
 # function to apply filters to get correct outputs for role and location 
 def apply_client_filters(matches, role, location):
     out = matches
@@ -233,7 +256,6 @@ with st.sidebar:
     st.divider()
     st.header("Search options")
     overfetch_k = st.slider("Overfetch size\n(how many results to pull when returning answer)\n", 20, 100, 30, step = 5)
-    use_mmr = st.checkbox("Rerank with MMR", True)
 
 # examples for users to pkug in to the searchbar form 
 examples = [
@@ -271,6 +293,7 @@ with st.form("search"):
         submitted = st.form_submit_button("Search", use_container_width = True)
 
 st.caption("Tips. Include a role and a location for stronger results. Add tools or skills like PySpark or Databricks if needed.")
+st.warning("Heads up. This version uses dense search only. Short queries work best. Long paste in inputs like full resumes may return weaker results. Multi vector search is coming soon.")
 
 # display clickable example queries for the examples we have above
 example_cols = st.columns(len(examples))
