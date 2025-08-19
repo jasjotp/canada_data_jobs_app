@@ -256,6 +256,13 @@ with st.sidebar:
     st.divider()
     st.header("Search options")
     overfetch_k = st.slider("Overfetch size\n(how many results to pull when returning answer)\n", 20, 100, 30, step = 5)
+    
+    # place the use MMR checkbox with a help tooktip in the sidebar
+    use_mmr = st.checkbox(
+        "Rerank with MMR (Improve variety)", 
+        value = True, 
+        help = "Reduces near duplicates by choosing results that are relevant and diverse. Best for broad queries."
+        )
 
 # examples for users to pkug in to the searchbar form 
 examples = [
