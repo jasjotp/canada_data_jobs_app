@@ -1,6 +1,4 @@
-## TrueNorthJobs
-
-# Canada Data Jobs Search Application
+# TrueNorthJobs
 
 A job search platform that leverages AI-powered semantic search to help data and AI professionals find relevant opportunities across Canada. Built with modern vector databases and large language models for intelligent job matching.
 
