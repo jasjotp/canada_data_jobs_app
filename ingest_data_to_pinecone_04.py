@@ -131,6 +131,7 @@ def upsert_jobs():
     count = 0 
     for row in fetch_rows():
         job_id = row[0]
+        index.delete(filter = {"job_posting_id": {"$eq": job_id}}) # clear any previous vectors for this job id
         doc = build_doc(row) # text to embed (only chose text that has semantic meaning)
         chunks = chunk_text(doc)
 

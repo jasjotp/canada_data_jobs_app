@@ -9,7 +9,7 @@ print(f"DSN: {dsn}")
 if not dsn:
     raise ValueError("Set PG_DSN, example postgresql://postgres:NewStrongPassword123@localhost:5432/jobs")
 
-INPUT_PATH = "linkedin_jobs.json"
+INPUT_PATH = "linkedin_jobs_last24h_20250819_063254.json"
 
 with open(INPUT_PATH, "r", encoding = "utf-8") as f:
     data = json.load(f)
