@@ -212,7 +212,7 @@ Automated job extraction targeting:
 ## Future Enhancements
 
 - Multi-vector search capabilities to allow for pasting of resumes in text box
-- Resume matching and skill gap analysis
+- Airflow DAG for automated daily ingestion of latest jobs in the last 24 hours
 - Real-time job alerts and notifications
 
 ---
