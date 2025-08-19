@@ -24,7 +24,7 @@ This application combines web scraping, vector embeddings, and conversational AI
 - **Advanced Filtering**: Role-based and location-based filtering for precise results
 - **Intelligent Ranking**: MMR (Maximal Marginal Relevance) reranking for diverse, relevant results
 - **Export Functionality**: Download search results as CSV for further analysis
-- **Real-time Data**: Automated pipeline for fresh job posting updates
+- **Fresh Data**: Daily refresh scripts to pull the latest postings
 
 ---
 
@@ -138,7 +138,7 @@ CREATE TABLE linkedin_jobs (
 
 ### Data Pipeline Execution
 
-1. **Extract job data**:
+1. **Extract latest job data**:
    ```bash
    python extract_jobs_data_01.py
    ```
